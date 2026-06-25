@@ -12,6 +12,3 @@ Keybinds can be found in the settings menu, at the bottom of the "Flight control
 
 You can disable using countermeasures on hold using BepinEx Configuration Manager:
 <img width="696" height="133" alt="image" src="https://github.com/user-attachments/assets/30995538-8b2e-4f74-866f-28237eced2a1" />
-
-## Showcase:
-https://github.com/user-attachments/assets/662464a2-5cd4-4bfd-bfa3-9eebb71e2366
