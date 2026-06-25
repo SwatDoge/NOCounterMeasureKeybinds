@@ -1,5 +1,5 @@
 # NOCounterMeasureKeybinds
-Allows you to bind ECM/Flares to seperate binds.
+Allows you to bind ECM/Flares to seperate binds. Works with mods that add countermeasures.
 
 ## Download
 https://github.com/SwatDoge/NOCounterMeasureKeybinds/releases/latest
