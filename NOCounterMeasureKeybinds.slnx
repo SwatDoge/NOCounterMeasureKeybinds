@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Patches/">
+    <File Path="RewiredAwakePatches.cs" />
+  </Folder>
+  <Project Path="NOCounterMeasureKeybinds.csproj" />
+</Solution>
