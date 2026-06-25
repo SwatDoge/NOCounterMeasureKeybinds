@@ -80,7 +80,7 @@ static class HInputManager_Base
 
         for (int index = 0; index < Plugin.counterMeasureSlots; index++)
         {
-            actions.Add(createAction(typeof(InputAction), catMap, targetCat.id, nextId, "counterMeasureSlot" + index, "Select Counter Measure slot #" + index));
+            actions.Add(createAction(typeof(InputAction), catMap, targetCat.id, nextId, "counterMeasureSlot" + index, "Select Counter Measure Slot #" + index));
             nextId++;
         }
 

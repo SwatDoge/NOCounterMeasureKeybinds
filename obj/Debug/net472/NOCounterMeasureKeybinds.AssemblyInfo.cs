@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NOCounterMeasureKeybinds")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d519a084a4702a269648a5a958e8ad3e018c0c4d")]
 [assembly: System.Reflection.AssemblyProductAttribute("CounterMeasureKeybind")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NOCounterMeasureKeybinds")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
