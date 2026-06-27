@@ -3,8 +3,10 @@ using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using Rewired;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 
 namespace NOCounterMeasureKeybinds
@@ -14,6 +16,8 @@ namespace NOCounterMeasureKeybinds
     {
         public static ConfigEntry<bool> deployCMInstant { get; set; }
         public static List<string> counterMeasureDisplayNames;
+        public static List<string> usedCounterMeasuresDisplayNames = new List<string>();
+        public static List<string> lastUsedCounterMeasureDisplayNames = new List<string>();
         public static int counterMeasureSlots;
         public static bool RewiredReady = false;
         public static new ManualLogSource Logger;
@@ -31,11 +35,11 @@ namespace NOCounterMeasureKeybinds
         {
             Countermeasure[] allCounterMeasures = Resources.FindObjectsOfTypeAll<Countermeasure>();
 
-            foreach(var info in BepInEx.Bootstrap.Chainloader.PluginInfos.Values)
+            foreach (var info in BepInEx.Bootstrap.Chainloader.PluginInfos.Values)
             {
                 Plugin.Logger.LogInfo(info.Metadata.GUID);
             }
-               
+
             isActiveDecoyModLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos
                 .Values
                 .Any(mod => mod.Metadata.GUID == "com.nuclearoption.activedecoy");
@@ -75,49 +79,62 @@ namespace NOCounterMeasureKeybinds
                 return;
             }
 
-            for (int index = 0; index < counterMeasureSlots; index++)
+            usedCounterMeasuresDisplayNames.Clear();
+
+            usedCounterMeasuresDisplayNames = usedCounterMeasuresDisplayNames.Concat(
+                counterMeasureDisplayNames
+                .Where(counterMeasureDisplayName => player.GetButton(counterMeasureDisplayName))
+            )
+            .Concat(
+                Enumerable.Range(0, counterMeasureSlots)
+                .Where((counterMeasureSlot, index) => player.GetButton("counterMeasureSlot" + index))
+                .Select((counterMeasureSlot, index) => aircraft.countermeasureManager.countermeasureStations[index].displayName)
+            )
+            .Distinct()
+            .ToList();
+
+            foreach (string counterMeasureDisplayName in usedCounterMeasuresDisplayNames)
             {
-                if (player.GetButton("counterMeasureSlot" + index))
+                int currentId = aircraft.countermeasureManager.activeIndex;
+                bool _continue = false;
+
+                if (!aircraft.IsServer)
                 {
-                    int currentId = aircraft.countermeasureManager.activeIndex;
-
-                    while (aircraft.countermeasureManager.activeIndex != index)
+                    if (lastUsedCounterMeasureDisplayNames.Count >= usedCounterMeasuresDisplayNames.Count)
                     {
-                        aircraft.countermeasureManager.NextCountermeasure();
-
-                        if (currentId == aircraft.countermeasureManager.activeIndex)
-                        {
-                            return;
-                        }
+                        lastUsedCounterMeasureDisplayNames.Clear();
                     }
 
-                    if (deployCMInstant.Value)
+                    if (lastUsedCounterMeasureDisplayNames.Contains(counterMeasureDisplayName))
                     {
-                        aircraft.countermeasureManager.DeployCountermeasure(aircraft);
+                        continue;
+                    }
+
+                    lastUsedCounterMeasureDisplayNames.Add(counterMeasureDisplayName);
+                }
+
+                while (aircraft.countermeasureManager.GetActiveCountermeasure().displayName != counterMeasureDisplayName)
+                {
+                    aircraft.countermeasureManager.NextCountermeasure();
+
+                    if (currentId == aircraft.countermeasureManager.activeIndex)
+                    {
+                        _continue = true;
+                        break;
                     }
                 }
-            }
 
-            foreach (string counterMeasureDisplayName in counterMeasureDisplayNames)
-            {
-                if (player.GetButton(counterMeasureDisplayName))
+                if (_continue)
                 {
-                    int currentId = aircraft.countermeasureManager.activeIndex;
+                    continue;
+                }
 
-                    while (aircraft.countermeasureManager.GetActiveCountermeasure().displayName != counterMeasureDisplayName)
-                    {
-                        aircraft.countermeasureManager.NextCountermeasure();
+                aircraft.countermeasureManager.DeployCountermeasure(aircraft);
+                aircraft.Countermeasures(true, aircraft.countermeasureManager.activeIndex);
 
-                        if (currentId == aircraft.countermeasureManager.activeIndex)
-                        {
-                            return;
-                        }
-                    }
-
-                    if (deployCMInstant.Value)
-                    {
-                        aircraft.countermeasureManager.DeployCountermeasure(aircraft);
-                    }
+                if (!aircraft.IsServer)
+                {
+                    break;
                 }
             }
         }

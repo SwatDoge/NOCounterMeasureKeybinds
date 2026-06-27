@@ -1,6 +1,5 @@
 C:\Users\swat\source\repos\NOCounterMeasureKeybinds\bin\Debug\net472\NOCounterMeasureKeybinds.dll
 C:\Users\swat\source\repos\NOCounterMeasureKeybinds\bin\Debug\net472\NOCounterMeasureKeybinds.pdb
-C:\Users\swat\source\repos\NOCounterMeasureKeybinds\bin\Debug\net472\Assembly-CSharp.dll
 C:\Users\swat\source\repos\NOCounterMeasureKeybinds\bin\Debug\net472\Mirage.dll
 C:\Users\swat\source\repos\NOCounterMeasureKeybinds\bin\Debug\net472\Rewired_Core.dll
 C:\Users\swat\source\repos\NOCounterMeasureKeybinds\bin\Debug\net472\UnityEngine.UI.dll
@@ -40,3 +39,4 @@ C:\Users\swat\source\repos\NOCounterMeasureKeybinds\obj\Debug\net472\NOCounterMe
 C:\Users\swat\source\repos\NOCounterMeasureKeybinds\obj\Debug\net472\NOCounte.EB9DF4B1.Up2Date
 C:\Users\swat\source\repos\NOCounterMeasureKeybinds\obj\Debug\net472\NOCounterMeasureKeybinds.dll
 C:\Users\swat\source\repos\NOCounterMeasureKeybinds\obj\Debug\net472\NOCounterMeasureKeybinds.pdb
+C:\Users\swat\source\repos\NOCounterMeasureKeybinds\bin\Debug\net472\Assembly-CSharp-publicized.dll
