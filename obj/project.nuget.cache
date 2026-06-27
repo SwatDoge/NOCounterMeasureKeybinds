@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4Z5fdLti+r8=",
+  "dgSpecHash": "gTvU2AQ0JkI=",
   "success": true,
-  "projectFilePath": "c:\\Users\\swat\\source\\repos\\NOCounterMeasureKeybinds\\NOCounterMeasureKeybinds.csproj",
+  "projectFilePath": "C:\\Users\\swat\\source\\repos\\NOCounterMeasureKeybinds\\NOCounterMeasureKeybinds.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\swat\\.nuget\\packages\\bepinex.analyzers\\1.0.8\\bepinex.analyzers.1.0.8.nupkg.sha512",
     "C:\\Users\\swat\\.nuget\\packages\\bepinex.baselib\\5.4.20\\bepinex.baselib.5.4.20.nupkg.sha512",

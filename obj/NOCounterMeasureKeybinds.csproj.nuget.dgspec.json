@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\swat\\source\\repos\\NOCounterMeasureKeybinds\\NOCounterMeasureKeybinds.csproj": {}
+    "C:\\Users\\swat\\source\\repos\\NOCounterMeasureKeybinds\\NOCounterMeasureKeybinds.csproj": {}
   },
   "projects": {
-    "c:\\Users\\swat\\source\\repos\\NOCounterMeasureKeybinds\\NOCounterMeasureKeybinds.csproj": {
+    "C:\\Users\\swat\\source\\repos\\NOCounterMeasureKeybinds\\NOCounterMeasureKeybinds.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\swat\\source\\repos\\NOCounterMeasureKeybinds\\NOCounterMeasureKeybinds.csproj",
+        "projectUniqueName": "C:\\Users\\swat\\source\\repos\\NOCounterMeasureKeybinds\\NOCounterMeasureKeybinds.csproj",
         "projectName": "NOCounterMeasureKeybinds",
-        "projectPath": "c:\\Users\\swat\\source\\repos\\NOCounterMeasureKeybinds\\NOCounterMeasureKeybinds.csproj",
+        "projectPath": "C:\\Users\\swat\\source\\repos\\NOCounterMeasureKeybinds\\NOCounterMeasureKeybinds.csproj",
         "packagesPath": "C:\\Users\\swat\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\swat\\source\\repos\\NOCounterMeasureKeybinds\\obj\\",
+        "outputPath": "C:\\Users\\swat\\source\\repos\\NOCounterMeasureKeybinds\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

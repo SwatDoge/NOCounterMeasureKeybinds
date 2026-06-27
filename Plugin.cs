@@ -17,6 +17,7 @@ namespace NOCounterMeasureKeybinds
         public static int counterMeasureSlots;
         public static bool RewiredReady = false;
         public static new ManualLogSource Logger;
+        public static bool isActiveDecoyModLoaded = false;
 
         private void Awake()
         {
@@ -30,6 +31,15 @@ namespace NOCounterMeasureKeybinds
         {
             Countermeasure[] allCounterMeasures = Resources.FindObjectsOfTypeAll<Countermeasure>();
 
+            foreach(var info in BepInEx.Bootstrap.Chainloader.PluginInfos.Values)
+            {
+                Plugin.Logger.LogInfo(info.Metadata.GUID);
+            }
+               
+            isActiveDecoyModLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos
+                .Values
+                .Any(mod => mod.Metadata.GUID == "com.nuclearoption.activedecoy");
+
             counterMeasureDisplayNames = allCounterMeasures
                 .Where(counterMeasure => counterMeasure is not null && counterMeasure.enabled)
                     .Select(counterMeasure => counterMeasure.displayName)
@@ -42,6 +52,12 @@ namespace NOCounterMeasureKeybinds
                 .OrderByDescending(counterMeasure => counterMeasure.Count())
                 .First()
                 .Count();
+
+            if (isActiveDecoyModLoaded)
+            {
+                counterMeasureSlots++;
+                counterMeasureDisplayNames.Add("Active Decoy");
+            }
         }
 
         private void Update()
